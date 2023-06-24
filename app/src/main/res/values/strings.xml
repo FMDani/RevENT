@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">RevENT</string>
+    <string name="neededPermissions">To go over, the app needs the CALENDAR PERMISSION to access to the calendar Content Provider</string>
+    <string name="grantPermission">Grant Now</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="insertEmail">Insert email address..</string>
+    <string name="insertPassword">Insert password..</string>
+    <string name="goToRegister">Not register? Click here to create a new account</string>
 </resources>

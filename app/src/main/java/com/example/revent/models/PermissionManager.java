@@ -24,7 +24,7 @@ public class PermissionManager {
         this.activity = activity;
     }
 
-    public boolean askNeededPermission(int requestCode) {
+    public boolean askNeededPermission(int requestCode, boolean performRequest) {
         List<String> missingPermissions = new ArrayList<>();
 
         for (String permission : NEEDED_PERMISSIONS) {
