@@ -8,20 +8,15 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 public abstract class LogFragment extends Fragment {
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
     private static final String ARG_PARAM1 = "method_name";
     private static final String ARG_PARAM2 = "method_prms";
 
-    // TODO: Rename and change types of parameters
     /*
-    private String mParam1;
-    private String mParam2;
-    */
     public LogFragment() {
         // Required empty public constructor
     }
-
-
+    */
     protected String callbackName;
     protected Class[] callbackPrms;
 
@@ -43,5 +38,26 @@ public abstract class LogFragment extends Fragment {
         args.putSerializable(ARG_PARAM2, prms);
         instance.setArguments(args);
         return  instance;
+    }
+
+    protected void initArguments() {
+        /* NOTE: You can pass some args to the fragment in the Bundle object
+        In the caller (Activity) context:
+            ```
+            Bundle bundle = new Bundle();
+            String myMessage = "This is a message";
+            bundle.putString("param_name", myMessage );
+            ```
+        In the onCreate of the Fragment class:
+            ```
+            if (getArguments() != null) {
+                mParam1 = getArguments().getString("param_name");
+            }
+            ```
+        */
+        if (getArguments() != null) {
+            this.callbackName = getArguments().getString(ARG_PARAM1);
+            this.callbackPrms = (Class[]) getArguments().getSerializable(ARG_PARAM2);
+        }
     }
 }

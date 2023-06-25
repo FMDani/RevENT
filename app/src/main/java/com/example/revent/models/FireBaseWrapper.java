@@ -10,6 +10,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -29,6 +31,7 @@ public class FireBaseWrapper {
 
         public static Callback newInstance(Object thiz, String name, Class<?>... prms) {
             Class<?> clazz = thiz.getClass();
+
             try{
                 return new Callback(clazz.getMethod(name, prms), thiz);
             } catch (NoSuchMethodException e) {
@@ -66,6 +69,10 @@ public class FireBaseWrapper {
 
         public boolean isAuthenticated() {return this.auth.getCurrentUser() != null;}
 
+       public FirebaseUser getUser() {
+           return this.auth.getCurrentUser();
+       }
+
         public void signIn(String email, String password, FireBaseWrapper.Callback callback) {
             System.out.println("email : " + email + "password: "+ password);
             this.auth.signInWithEmailAndPassword(email, password)
@@ -84,11 +91,72 @@ public class FireBaseWrapper {
                         public void onComplete(@NonNull Task<AuthResult> task) {
 
                             callback.invoke(task.isSuccessful());
+                            /*
+                            if (task.isSuccessful()) {
+                                // Sign in success, update UI with the signed-in user's information
+                                Log.d(TAG, "createUserWithEmail:success");
+                                FirebaseUser user = auth.getCurrentUser();
+
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Log.w(TAG, "createUserWithEmail:failure", task.getException());
+
+
+                            }
+                            */
+
                         }
                     });
         }
 
-        public void signOut() {this.auth.signOut();}
+        public void signOut(FireBaseWrapper.Callback callback) {
+            this.auth.signOut();
+            callback.invoke(true);
 
+        }
+
+       public String getUid() {
+           // TODO: remove this assert and better handling of non logged-in users
+           assert this.isAuthenticated();
+           return this.getUser().getUid();
+       }
+
+    }
+
+    public static class RTDatabase {
+
+        private final static String TAG = RTDatabase.class.getCanonicalName();
+
+        // This is the name of the root of the DB (in the JSON format)
+
+        private static final String CHILD = "events";
+
+        private DatabaseReference getDb() {
+
+            DatabaseReference ref = FirebaseDatabase.getInstance("https://revent-93be7-default-rtdb.europe-west1.firebasedatabase.app/").getReference(CHILD);
+
+
+            // Ritorna solo gli eventi del utente corrente
+
+            String uid = new FireBaseWrapper.Auth().getUid();
+
+            if(uid == null) {
+                return null;
+            }
+
+            return ref.child(uid);
+        }
+
+        public void writeDbData(MyEvent myEvent) {
+            DatabaseReference ref = getDb();
+            if(ref == null) {
+                return;
+            }
+
+            ref.child(String.valueOf(myEvent.getEventId())).setValue(myEvent);
+        }
+
+
+        public void readDbData(FireBaseWrapper.Callback callback) {}
     }
 }

@@ -16,12 +16,8 @@ import com.example.revent.R;
 import com.example.revent.activities.EnterActivity;
 import com.example.revent.models.FireBaseWrapper;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link LoginFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class LoginFragment extends LogFragment {
+    /*
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,6 +29,8 @@ public class LoginFragment extends LogFragment {
     private String mParam1;
     private String mParam2;
     */
+
+    /*
     public LoginFragment() {
         // Required empty public constructor
     }
@@ -48,14 +46,20 @@ public class LoginFragment extends LogFragment {
         fragment.setArguments(args);
         return fragment;
     }
+    */
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        /*
         if (getArguments() != null) {
             this.callbackName = getArguments().getString(ARG_PARAM1);
             this.callbackPrms = (Class[]) getArguments().getSerializable(ARG_PARAM2);
         }
+
+        */
+        this.initArguments();
     }
 
     @Override
@@ -93,7 +97,6 @@ public class LoginFragment extends LogFragment {
 
                 // Perform SignIn
                 FireBaseWrapper.Auth auth = new FireBaseWrapper.Auth();
-                // TODO: accept as input also the list of parameters
                 auth.signIn(
                         email.getText().toString(),
                         password.getText().toString(),

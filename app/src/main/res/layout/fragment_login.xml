@@ -29,15 +29,16 @@
             android:autofillHints="Insert password.."
             android:ems="10"
             android:hint="@string/insertPassword"
-            android:inputType="textPassword" /> />
+            android:inputType="textPassword" />
+        />
 
         <TextView
             android:id="@+id/switchLoginToRegisterLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/goToRegister"
+            android:layout_margin="6dp"
             android:gravity="center"
-            android:layout_margin="6dp"/>
+            android:text="@string/goToRegister" />
 
         <Button
             android:id="@+id/logButton"
