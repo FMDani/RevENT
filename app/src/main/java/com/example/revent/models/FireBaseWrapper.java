@@ -117,7 +117,7 @@ public class FireBaseWrapper {
 
        public String getUid() {
            // TODO: remove this assert and better handling of non logged-in users
-           assert this.isAuthenticated();
+           //assert this.isAuthenticated();
            return this.getUser().getUid();
        }
 
@@ -134,6 +134,7 @@ public class FireBaseWrapper {
         private DatabaseReference getDb() {
 
             DatabaseReference ref = FirebaseDatabase.getInstance("https://revent-93be7-default-rtdb.europe-west1.firebasedatabase.app/").getReference(CHILD);
+            //FirebaseDatabase.getInstance("https://revent-93be7-default-rtdb.europe-west1.firebasedatabase.app/").getReference("users").setValue("test");
 
 
             // Ritorna solo gli eventi del utente corrente

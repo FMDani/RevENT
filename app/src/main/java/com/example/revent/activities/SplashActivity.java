@@ -32,17 +32,22 @@ public class SplashActivity extends AppCompatActivity {
         //TODO : check user
         // if  not --> log
 
-        FireBaseWrapper.Auth auth = new FireBaseWrapper.Auth();
-        if(!auth.isAuthenticated()) {
-            // go to Activity for login or signup
-            this.goToActivity(EnterActivity.class);
-        }
+
 
         //TODO: check permissions
+
         PermissionManager pm = new PermissionManager(this);
         if(!pm.askNeededPermission(PERMISSION_REQUEST_CODE, false)) {
             //Go to MainActivity
-            this.goToActivity(MainActivity.class);
+            //this.goToActivity(MainActivity.class);
+            FireBaseWrapper.Auth auth = new FireBaseWrapper.Auth();
+            boolean test = auth.isAuthenticated();
+            if(!auth.isAuthenticated()) {
+                // go to Activity for login or signup
+                this.goToActivity(EnterActivity.class);
+            }else{
+                this.goToActivity(MainActivity.class);
+            }
 
         }
 
@@ -54,12 +59,13 @@ public class SplashActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(!pm.askNeededPermission(PERMISSION_REQUEST_CODE, true)) {
                     //Go to MainActivity
-                    SplashActivity.this.goToActivity(MainActivity.class);
+                    SplashActivity.this.goToActivity(SplashActivity.class);
 
                 }
 
             }
         });
+
 
     }
 
