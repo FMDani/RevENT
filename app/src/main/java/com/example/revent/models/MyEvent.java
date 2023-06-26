@@ -1,7 +1,7 @@
 package com.example.revent.models;
 
 
-
+import java.util.ArrayList;
 
 public class MyEvent {
 
@@ -14,9 +14,14 @@ public class MyEvent {
     private long dtEnd;
     private String dur;
 
+    private String userCreatorId;
+
+    private ArrayList<String> userSubscribeId;
+
     public MyEvent() {}
 
-    public MyEvent(long eventId, String title, String descr, long dtStart, long dtEnd, String dur) {
+    public MyEvent(long eventId, String title, String descr, long dtStart, long dtEnd, String dur, String userCreatorId ) {
+        this.userCreatorId = userCreatorId;
         this.eventId = eventId;
         this.title = title;
         this.descr = descr;

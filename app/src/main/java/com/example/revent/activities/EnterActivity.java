@@ -37,7 +37,7 @@ public class EnterActivity extends AppCompatActivity {
         if(isLogin) {
             fragment = LogFragment.newInstance(LoginFragment.class,"signinCallback", boolean.class);
         }else {
-            fragment = LogFragment.newInstance(SignUpFragment.class, "signinCallback", boolean.class);
+            fragment = LogFragment.newInstance(SignUpFragment.class, "signUpCallback", boolean.class);
         }
 
 
@@ -70,4 +70,5 @@ public class EnterActivity extends AppCompatActivity {
             this.finish();
         }
     }
+
 }

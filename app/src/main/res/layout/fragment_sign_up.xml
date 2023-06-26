@@ -20,6 +20,26 @@
             android:hint="@string/insertEmail"
             android:layout_margin="10dp"
             android:autofillHints="@string/insertEmail" />
+        <EditText
+            android:id="@+id/userName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="@string/name_signup"
+            android:layout_margin="10dp"
+            android:layout_marginTop="0dp"
+            android:autofillHints="@string/insertPasswordAgain" />
+        <EditText
+            android:id="@+id/userSurname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="@string/surname_signup"
+            android:layout_margin="10dp"
+            android:layout_marginTop="0dp"
+            android:autofillHints="@string/insertPasswordAgain" />
 
         <EditText
             android:id="@+id/userPassword"
@@ -42,6 +62,8 @@
             android:layout_margin="10dp"
             android:layout_marginTop="0dp"
             android:autofillHints="@string/insertPasswordAgain" />
+
+
 
         <!--
         TODO: Add all interesting infos during the registration

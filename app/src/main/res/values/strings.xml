@@ -9,4 +9,10 @@
     <string name="insertPasswordAgain">Insert again the password..</string>
     <string name="goToRegister">Not register? Click here to create a new account</string>
     <string name="signup">Signup</string>
+    <string name="name_signup">Name..</string>
+    <string name="surname_signup">Surname..</string>
+    <string name="surname_profile">Surname</string>
+    <string name="name_profile">Name</string>
+    <string name="email_profile">Email</string>
+    <string name="signout_profile">SignOut</string>
 </resources>
