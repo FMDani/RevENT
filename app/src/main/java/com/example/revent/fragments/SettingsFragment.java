@@ -3,6 +3,9 @@ package com.example.revent.fragments;
 import static java.nio.file.Paths.get;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,12 +25,18 @@ import com.example.revent.activities.EditProfileActivity;
 import com.example.revent.activities.SplashActivity;
 import com.example.revent.models.FireBaseWrapper;
 import com.example.revent.models.User;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import java.io.File;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -47,9 +57,33 @@ public class SettingsFragment extends Fragment {
         TextView email_textView = externalView.findViewById(R.id.profile_email);
 
 
-        // Set the image resource for the CircleImageView
-        circleImageView.setImageResource(R.drawable.usa);
+        String uid = new FireBaseWrapper.Auth().getUid();
 
+
+        // Set the image resource for the CircleImageView
+        //circleImageView.setImageResource(R.drawable.usa);
+
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+
+        StorageReference storageRef = storage.getReference();
+
+        StorageReference imageRef = storageRef.child("images_profile/"+uid+"/image_profile.jpg");
+
+        final long ONE_MEGABYTE = 1024 * 1024*5;
+        imageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                // Data for "images/island.jpg" is returns, use this as needed
+                Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                circleImageView.setImageBitmap(bmp);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle any errors
+                Toast.makeText(getActivity(), "Failed to download",Toast.LENGTH_SHORT).show();
+            }
+        });
         ///////////////////////////////////
 
         DatabaseReference ref = FirebaseDatabase.getInstance("https://revent-93be7-default-rtdb.europe-west1.firebasedatabase.app/").getReference("users");
@@ -60,7 +94,6 @@ public class SettingsFragment extends Fragment {
                     .show();
 
         }
-        String uid = new FireBaseWrapper.Auth().getUid();
 
         if(uid == null) {
             Toast

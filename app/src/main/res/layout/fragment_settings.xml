@@ -13,7 +13,6 @@
             android:layout_width="160dp"
             android:layout_height="160dp"
             android:layout_centerInParent="true"
-            android:src="@drawable/usa"
             app:civ_border_width="2dp"
             app:civ_border_color="@color/dark" />
 
@@ -37,17 +36,19 @@
             android:textSize="25dp" />
 
         <Button
-            android:id="@+id/sgnoutbut"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/signout_profile" />
-
-        <Button
             android:id="@+id/edit_profile_button"
             android:layout_margin="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="EditProfile" />
+
+        <Button
+            android:id="@+id/sgnoutbut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/signout_profile" />
+
+
 
 
 </LinearLayout>

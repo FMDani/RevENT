@@ -7,12 +7,59 @@ public class MyEvent {
 
     // TODO: Levare - è simile a quella del prof ma io non uso il contentprovider infatti levo calenid e isallday(attributi)
 
-    private long eventId;
+    private String eventId;
     private String title;
+
+    private String place;
     private String descr;
-    private long dtStart;
-    private long dtEnd;
+    private String dtStart;
+    private String dtEnd;
     private String dur;
+    public String getPlace() {
+        return place;
+    }
+
+    public String getDtStart() {
+        return dtStart;
+    }
+
+    public void setDtStart(String dtStart) {
+        this.dtStart = dtStart;
+    }
+
+    public String getDtEnd() {
+        return dtEnd;
+    }
+
+    public void setDtEnd(String dtEnd) {
+        this.dtEnd = dtEnd;
+    }
+
+    public String getUserCreatorId() {
+        return userCreatorId;
+    }
+
+    public void setUserCreatorId(String userCreatorId) {
+        this.userCreatorId = userCreatorId;
+    }
+
+    public ArrayList<String> getUserSubscribeId() {
+        return userSubscribeId;
+    }
+
+    public void setUserSubscribeId(ArrayList<String> userSubscribeId) {
+        this.userSubscribeId = userSubscribeId;
+    }
+
+
+
+    public void setPlace(String place) {
+        this.place = place;
+    }
+
+
+
+
 
     private String userCreatorId;
 
@@ -20,18 +67,24 @@ public class MyEvent {
 
     public MyEvent() {}
 
-    public MyEvent(long eventId, String title, String descr, long dtStart, long dtEnd, String dur, String userCreatorId ) {
-        this.userCreatorId = userCreatorId;
+    public MyEvent(String eventId, String title, String place, String descr, String dtStart, String dtEnd, String dur, String userCreatorId, ArrayList<String> userSubscribeId) {
         this.eventId = eventId;
         this.title = title;
+        this.place = place;
         this.descr = descr;
         this.dtStart = dtStart;
         this.dtEnd = dtEnd;
         this.dur = dur;
+        this.userCreatorId = userCreatorId;
+        this.userSubscribeId = userSubscribeId;
     }
 
-    public long getEventId() {
+    public String getEventId() {
         return eventId;
+    }
+
+    public void setEventId(String eventId) {
+        this.eventId = eventId;
     }
 
     public String getTitle() {
@@ -42,22 +95,14 @@ public class MyEvent {
         return descr;
     }
 
-    public long getDtStart() {
-        return dtStart;
-    }
 
-    public long getDtEnd() {
-        return dtEnd;
-    }
 
     public String getDur() {
         return dur;
     }
 
 
-    public void setEventId(long eventId) {
-        this.eventId = eventId;
-    }
+
 
 
     public void setTitle(String title) {
@@ -68,13 +113,7 @@ public class MyEvent {
         this.descr = descr;
     }
 
-    public void setDtStart(long dtStart) {
-        this.dtStart = dtStart;
-    }
 
-    public void setDtEnd(long dtEnd) {
-        this.dtEnd = dtEnd;
-    }
 
     public void setDur(String dur) {
         this.dur = dur;

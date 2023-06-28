@@ -1,3 +1,0 @@
-FirebaseAuth auth = FirebaseAuth.getInstance();
-                auth.signOut();
-                signinCallback(true)

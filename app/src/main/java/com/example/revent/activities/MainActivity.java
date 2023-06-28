@@ -49,8 +49,10 @@ public class MainActivity extends AppCompatActivity {
                     getSupportFragmentManager().beginTransaction().replace(R.id.container, homeFragment).commit();
                     return true;
                 } else if (itemId == R.id.notification) {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.container, notificationFragment).commit();
-                    return true;
+                    // Create an Intent object
+                    Intent intent = new Intent(MainActivity.this, AddEvent.class);
+                    startActivity(intent);
+                    finish();
                 } else if (itemId == R.id.settings) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.container, settingsFragment).commit();
                     return true;
