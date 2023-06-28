@@ -7,7 +7,7 @@ The concept behind my application is to provide users with a platform to rent ou
 ## Key Features in the Alpha Version:
 
 - User Registration and Login Functionality
-- Comprehensive User Profile Section
-- Intuitive Event Creation Process
-- Efficient Event Search and Advanced Filtering Capabilities
+- User Profile Section
+- Event Creation Process
+- Event Search and Filtering Capabilities
 
