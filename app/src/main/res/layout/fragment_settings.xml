@@ -7,7 +7,6 @@
     android:gravity="center">
 
 
-
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile_image"
             android:layout_width="160dp"
@@ -35,12 +34,26 @@
             android:text="@string/email_profile"
             android:textSize="25dp" />
 
-        <Button
-            android:id="@+id/edit_profile_button"
-            android:layout_margin="20dp"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="EditProfile" />
+            android:gravity="center"
+            android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/message_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:text="Message box" />
+
+                <Button
+                    android:id="@+id/edit_profile_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:text="EditProfile" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/sgnoutbut"

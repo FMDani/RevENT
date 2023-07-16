@@ -20,7 +20,8 @@
             android:layout_marginBottom="10dp"
             android:text="Edit Profile"
             android:textSize="30dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="#B2B4B5"/>
 
         <ImageView
             android:id="@+id/imagefromgallery"

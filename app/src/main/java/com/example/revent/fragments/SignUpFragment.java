@@ -1,8 +1,11 @@
 package com.example.revent.fragments;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +19,7 @@ import androidx.annotation.RequiresApi;
 
 import com.example.revent.R;
 import com.example.revent.activities.EnterActivity;
+import com.example.revent.activities.MainActivity;
 import com.example.revent.activities.SplashActivity;
 import com.example.revent.models.FireBaseWrapper;
 import com.example.revent.models.User;
@@ -25,6 +29,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 
 public class SignUpFragment extends LogFragment {
@@ -99,6 +104,7 @@ public class SignUpFragment extends LogFragment {
 
                  */
                 auth = FirebaseAuth.getInstance();
+                
                 auth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString())
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
@@ -111,16 +117,44 @@ public class SignUpFragment extends LogFragment {
                                             .show();
                                 } else {
                                     DatabaseReference ref = FirebaseDatabase.getInstance("https://revent-93be7-default-rtdb.europe-west1.firebasedatabase.app/").getReference("users");
+                                    DatabaseReference ref_token = FirebaseDatabase.getInstance("https://revent-93be7-default-rtdb.europe-west1.firebasedatabase.app/").getReference("tokens");
                                     if(ref == null) {
                                         return;
                                     }
+
                                     String uid = new FireBaseWrapper.Auth().getUid();
+
 
                                     if(uid == null) {
                                         Toast
                                                 .makeText(getActivity(), "User not found", Toast.LENGTH_SHORT)
                                                 .show();
                                     }
+
+                                    // Add new token for device
+
+
+                                    FirebaseMessaging.getInstance().getToken()
+                                            .addOnCompleteListener(new OnCompleteListener<String>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<String> task) {
+                                                    if (!task.isSuccessful()) {
+                                                        Log.w(TAG, "Fetching FCM registration token failed", task.getException());
+                                                        return;
+                                                    }
+
+
+                                                    // Get new FCM registration token
+                                                    String token = task.getResult();
+
+                                                    ref_token.child(uid).setValue(token);
+
+                                                    // toast
+                                                    Toast.makeText(getActivity(),"new FCM registration token " + token, Toast.LENGTH_SHORT)
+                                                            .show();
+                                                }
+                                            });
+
 
                                     DatabaseReference ref_user = ref.child(uid);
                                     User user = new User(email.getText().toString(), name.getText().toString(), surname.getText().toString());

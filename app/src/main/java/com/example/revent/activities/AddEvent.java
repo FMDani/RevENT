@@ -40,8 +40,14 @@ public class AddEvent extends AppCompatActivity {
     boolean upload_image_button = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_event);
+
+        final ImageView backBtn = findViewById(R.id.backBtn_event);
+
         ImageButton imageButton = findViewById(R.id.imageButton2);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,7 +104,14 @@ public class AddEvent extends AppCompatActivity {
             }
         });
 
-
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AddEvent.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private void uploadImage(String event_id) {

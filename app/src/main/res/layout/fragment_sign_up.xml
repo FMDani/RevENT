@@ -3,66 +3,78 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/theme_color_8"
     tools:context=".fragments.SignUpFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
 
         <EditText
             android:id="@+id/userEmail"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textEmailAddress"
-            android:hint="@string/insertEmail"
+            android:layout_height="30dp"
+            android:paddingStart="20dp"
             android:layout_margin="10dp"
-            android:autofillHints="@string/insertEmail" />
+            android:autofillHints="@string/insertEmail"
+            android:background="@drawable/round_back_white_10"
+            android:ems="10"
+            android:hint="@string/insertEmail"
+            android:inputType="textEmailAddress" />
+
         <EditText
             android:id="@+id/userName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="@string/name_signup"
+            android:layout_height="30dp"
+            android:paddingStart="20dp"
             android:layout_margin="10dp"
             android:layout_marginTop="0dp"
-            android:autofillHints="@string/insertPasswordAgain" />
+            android:autofillHints="@string/insertPasswordAgain"
+            android:background="@drawable/round_back_white_10"
+            android:ems="10"
+            android:hint="@string/name_signup"
+            android:inputType="textPersonName" />
+
         <EditText
             android:id="@+id/userSurname"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="@string/surname_signup"
+            android:layout_height="30dp"
+            android:paddingStart="20dp"
             android:layout_margin="10dp"
             android:layout_marginTop="0dp"
-            android:autofillHints="@string/insertPasswordAgain" />
+            android:autofillHints="@string/insertPasswordAgain"
+            android:background="@drawable/round_back_white_10"
+            android:ems="10"
+            android:hint="@string/surname_signup"
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/userPassword"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPassword"
-            android:hint="@string/insertPassword"
+            android:layout_height="30dp"
+            android:paddingStart="20dp"
             android:layout_margin="10dp"
             android:layout_marginTop="0dp"
-            android:autofillHints="@string/insertPassword" />
+            android:autofillHints="@string/insertPassword"
+            android:background="@drawable/round_back_white_10"
+            android:ems="10"
+            android:hint="@string/insertPassword"
+            android:inputType="textPassword" />
 
         <EditText
             android:id="@+id/userPasswordAgain"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPassword"
-            android:hint="@string/insertPasswordAgain"
+            android:layout_height="30dp"
+            android:paddingStart="20dp"
             android:layout_margin="10dp"
             android:layout_marginTop="0dp"
-            android:autofillHints="@string/insertPasswordAgain" />
-
+            android:autofillHints="@string/insertPasswordAgain"
+            android:background="@drawable/round_back_white_10"
+            android:ems="10"
+            android:hint="@string/insertPasswordAgain"
+            android:inputType="textPassword" />
 
 
         <!--
@@ -74,16 +86,21 @@
             android:id="@+id/switchRegisterToLoginLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/goToLogin"
+            android:layout_margin="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/round_back_blu_10"
             android:gravity="center"
             android:pointerIcon="hand"
-            android:layout_margin="6dp"/>
+            android:text="@string/goToLogin"
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/logButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/signup"/>
+            android:layout_marginTop="10dp"
+            android:text="@string/signup" />
 
     </LinearLayout>
 

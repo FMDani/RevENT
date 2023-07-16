@@ -67,7 +67,9 @@ public class FireBaseWrapper {
             this.auth = FirebaseAuth.getInstance();
         }
 
-        public boolean isAuthenticated() {return this.auth.getCurrentUser() != null;}
+        public boolean isAuthenticated() {
+            return this.auth.getCurrentUser() != null;
+        }
 
        public FirebaseUser getUser() {
            return this.auth.getCurrentUser();
@@ -148,6 +150,23 @@ public class FireBaseWrapper {
             return ref.child(uid);
         }
 
+        private DatabaseReference getUserDb() {
+
+            DatabaseReference ref = FirebaseDatabase.getInstance("https://revent-93be7-default-rtdb.europe-west1.firebasedatabase.app/").getReference("users");
+            //FirebaseDatabase.getInstance("https://revent-93be7-default-rtdb.europe-west1.firebasedatabase.app/").getReference("users").setValue("test");
+
+
+            // Ritorna solo gli eventi del utente corrente
+
+            String uid = new FireBaseWrapper.Auth().getUid();
+
+            if(uid == null) {
+                return null;
+            }
+
+            return ref.child(uid);
+        }
+
         public void writeDbData(MyEvent myEvent) {
             DatabaseReference ref = getDb();
             if(ref == null) {
@@ -158,6 +177,9 @@ public class FireBaseWrapper {
         }
 
 
-        public void readDbData(FireBaseWrapper.Callback callback) {}
+        public void readUserDbData(User user) {
+
+            DatabaseReference ref_user = getDb();
+        }
     }
 }

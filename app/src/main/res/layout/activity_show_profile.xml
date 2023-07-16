@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.ShowProfileActivity">
+
+    <ImageView
+        android:id="@+id/backBtn_showprf"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="#DEE5FF"
+        android:paddingStart="12sp"
+        android:paddingEnd="2dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:elevation="10dp"
+        android:src="@drawable/back_btn" />
+
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:layout_marginTop="150dp"
+       android:gravity="center"
+       android:orientation="vertical">
+
+       <de.hdodenhof.circleimageview.CircleImageView
+           android:id="@+id/show_profile_img"
+           android:layout_width="160dp"
+           android:layout_height="160dp"
+           >
+       </de.hdodenhof.circleimageview.CircleImageView>
+
+       <TextView
+           android:id="@+id/showprofile_name"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="50dp"
+           android:padding="10dp"
+           android:text="name"
+           android:textSize="20dp"
+           android:textStyle="bold"/>
+
+       <TextView
+           android:id="@+id/showprofile_surname"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:padding="10dp"
+           android:text="surname"
+           android:textSize="20dp"
+           android:textStyle="bold"/>
+
+       <TextView
+           android:id="@+id/showprofile_email"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:padding="10dp"
+           android:text="email"
+           android:textSize="20dp"
+           android:textStyle="bold"/>
+       <Button
+           android:id="@+id/btn_listings"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:padding="10dp"
+           android:text="Listings"
+           android:textStyle="bold"
+           android:textSize="20dp"></Button>
+       <FrameLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:id="@+id/container"
+           android:layout_above="@id/btn_listings">
+       </FrameLayout>
+
+   </LinearLayout>
+
+
+</RelativeLayout>

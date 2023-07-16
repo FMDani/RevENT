@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.revent.R;
+import com.example.revent.activities.ChatActivity;
 import com.example.revent.activities.EditProfileActivity;
 import com.example.revent.activities.SplashActivity;
 import com.example.revent.models.FireBaseWrapper;
@@ -182,6 +183,7 @@ public class SettingsFragment extends Fragment {
         });
         Button edtprofbutton = externalView.findViewById(R.id.edit_profile_button);
 
+
         edtprofbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -206,9 +208,36 @@ public class SettingsFragment extends Fragment {
         });
 
 
+        Button message_button = externalView.findViewById(R.id.message_button);
+
+        message_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //TODO refactor as a callback
+               /*
+                FireBaseWrapper.Auth auth = new FireBaseWrapper.Auth();
+                auth.signOut(
+                        FireBaseWrapper.Callback
+                                .newInstance(MainActivity.class,
+                                        "signinCallback",
+                                        boolean.class)
+                );
+                */
+
+
+                Intent intent = new Intent(getActivity(), ChatActivity.class);
+                startActivity(intent);
+                getActivity().finish();
+
+            }
+        });
+
+
 
         return externalView;
     }
+
 
 
     public void signinCallback(boolean result) {

@@ -4,8 +4,6 @@ public class User {
 
     private String email;
 
-    public User() {
-    }
 
     public String getName() {
         return name;
@@ -18,6 +16,8 @@ public class User {
     public void setSurname(String surname) {
         this.surname = surname;
     }
+
+    public User() {}
 
     public User(String email, String name, String surname) {
         this.email = email;
@@ -40,4 +40,5 @@ public class User {
     private String name;
     private String surname;
 
+    private String token;
 }
