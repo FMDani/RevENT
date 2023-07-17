@@ -46,7 +46,7 @@ public class SplashActivity extends AppCompatActivity {
         // if  not --> log
 
 
-        createNotificationChannel();
+        //createNotificationChannel();
 
         // check  Calendar permissions
 
@@ -98,7 +98,7 @@ public class SplashActivity extends AppCompatActivity {
         */
     }
 
-
+    /*
     // creazione di un canale di notifica
 
     public String CHANNEL_ID = "Messages";
@@ -119,7 +119,7 @@ public class SplashActivity extends AppCompatActivity {
 
         }
     }
-
+    */
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

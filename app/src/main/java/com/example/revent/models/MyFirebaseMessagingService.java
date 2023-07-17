@@ -2,6 +2,7 @@ package com.example.revent.models;
 
 import android.Manifest;
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.pm.PackageManager;
 import android.util.Log;
@@ -9,6 +10,7 @@ import android.util.Log;
 //import com.example.revent.Manifest;
 import com.example.revent.R;
 import com.example.revent.activities.SplashActivity;
+
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -24,29 +26,37 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
-public class PushNotificationService extends FirebaseMessagingService {
+public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
-    SplashActivity splashActivity = new SplashActivity();
+
     @Override
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
 
         String title = remoteMessage.getNotification().getTitle();
         String text = remoteMessage.getNotification().getBody();
-
-        Notification.Builder notification = new Notification.Builder(this, splashActivity.CHANNEL_ID)
+        String CHANNEL_ID = "MESSAGE";
+        CharSequence name;
+        NotificationChannel channel = new NotificationChannel(
+                CHANNEL_ID,
+                "Message Notification",
+                NotificationManager.IMPORTANCE_HIGH);
+        getSystemService(NotificationManager.class).createNotificationChannel(channel);
+        Notification.Builder notification = new Notification.Builder(this, CHANNEL_ID)
                 .setContentTitle(title)
                 .setContentText(text)
-                .setSmallIcon(R.drawable.ic_launcher)
+                .setSmallIcon(R.mipmap.ic_launcher)
                 .setAutoCancel(true);
-
-        // Verifica se hai l'autorizzazione
-
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
-                == PackageManager.PERMISSION_GRANTED) {
-
-
-            NotificationManagerCompat.from(this).notify(1,notification.build());
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
         }
+        NotificationManagerCompat.from(this).notify(1, notification.build());
 
 
 

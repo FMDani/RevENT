@@ -91,9 +91,7 @@ public class ShowProfileActivity extends AppCompatActivity {
         backBtn_showprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ShowProfileActivity.this, ShowEventActivity.class);
-                startActivity(intent);
-                finish();
+                onBackPressed();
             }
         });
     }

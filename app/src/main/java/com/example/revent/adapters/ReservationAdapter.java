@@ -7,14 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.revent.R;
-import com.example.revent.models.Reservation;
+import com.example.revent.models.FCMSend;
 import com.example.revent.models.ReservationList;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -23,6 +23,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -59,6 +60,16 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
         DatabaseReference databaseReference_users = FirebaseDatabase.getInstance("https://revent-93be7-default-rtdb.europe-west1.firebasedatabase.app/").getReference("users");
 
 
+        if (list1.isConfirmed()) {
+
+            holder.btn_confirmstatus.setVisibility(View.GONE);
+            holder.confirmedText.setVisibility(View.VISIBLE);
+        } else {
+
+            holder.btn_confirmstatus.setVisibility(View.VISIBLE);
+            holder.confirmedText.setVisibility(View.GONE);
+        }
+
         final long ONE_MEGABYTE = 1024 * 1024 * 3;
         imageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
@@ -92,15 +103,62 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
         });
         holder.reservation_date.setText(list1.getReservationDate());
 
-        // TODO: implement the confirm button here with setonclick
+        // TODO: implement the change status button
 
         holder.btn_confirmstatus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DatabaseReference databaseReference_res = FirebaseDatabase.getInstance("https://revent-93be7-default-rtdb.europe-west1.firebasedatabase.app/").getReference("reservations");
+                DatabaseReference databaseReference_events = FirebaseDatabase.getInstance("https://revent-93be7-default-rtdb.europe-west1.firebasedatabase.app/").getReference("events");
+                DatabaseReference databaseReference_users = FirebaseDatabase.getInstance("https://revent-93be7-default-rtdb.europe-west1.firebasedatabase.app/").getReference("users");
+                DatabaseReference databaseReference_tokens = FirebaseDatabase.getInstance("https://revent-93be7-default-rtdb.europe-west1.firebasedatabase.app/").getReference("tokens");
 
+
+                databaseReference_events.child(list1.getIdEvent()).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        String confirmedReservationId = dataSnapshot.child("confirmedReservationId").getValue(String.class);
+                        String confirmedClientId = dataSnapshot.child("confirmedClientId").getValue(String.class);
+
+                        if (confirmedReservationId.equals("") && confirmedClientId.equals("")) {
+                            databaseReference_events.child(list1.getIdEvent()).child("confirmedReservationId").setValue(list1.getReservationId());
+                            databaseReference_events.child(list1.getIdEvent()).child("confirmedClientId").setValue(list1.getIdClient());
+                            databaseReference_res.child(list1.getReservationId()).child("confirmed").setValue(true);
+
+                            // TODO: invia una notifica all'utente di avvenuta conferma
+
+                            databaseReference_tokens.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    String clientToken = snapshot.child(list1.getIdClient()).getValue(String.class);
+                                    FCMSend.pushNotification(
+                                            context,
+                                            clientToken,
+                                            "Hello",
+                                            "Hello World message"
+
+                                    );
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+
+                        } else {
+                            Toast.makeText(context, "Already confirmed", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        // Gestisci l'errore nella lettura dei dati
+                    }
+                });
             }
         });
+
     }
 
     public void updateData(List<ReservationList> reservationLists) {
@@ -118,6 +176,7 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
         private TextView reservation_name;
         private TextView reservation_surname;
         private TextView reservation_date;
+        private TextView confirmedText;
         private Button btn_statusref;
         private Button btn_confirmstatus;
 
@@ -129,6 +188,7 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
             reservation_name = itemView.findViewById(R.id.name_reservation);
             reservation_surname = itemView.findViewById(R.id.surname_reservation);
             reservation_date = itemView.findViewById(R.id.date_reservation);
+            confirmedText = itemView.findViewById(R.id.confirmedText);
             btn_statusref = itemView.findViewById(R.id.btn_refstatus);
             btn_confirmstatus = itemView.findViewById(R.id.btn_confirmstatus);
         }

@@ -52,8 +52,10 @@ public class OwnerReservationsActivity extends AppCompatActivity {
 
 
                 // Leggi i dati della prenotazione dal nodo corrente
+
                 if(snapshot.child("idEvent").getValue(String.class).equals(getEventId)){
-                    //String reservationId = reservationSnapshot.getKey();
+
+                    String reservationId = snapshot.getKey();
                     String idClient = snapshot.child("idClient").getValue(String.class);
                     String idEvent = snapshot.child("idEvent").getValue(String.class);
                     String reservationDate = snapshot.child("reservationDate").getValue(String.class);
@@ -62,9 +64,10 @@ public class OwnerReservationsActivity extends AppCompatActivity {
                     // Crea un oggetto Reservation con i dati ottenuti
 
 
-                    ReservationList reservationList = new ReservationList(idClient, idEvent,reservationDate, confirmed);
+                    ReservationList reservationList = new ReservationList(idClient, idEvent,reservationDate, confirmed, reservationId);
 
                     // Aggiungi l'oggetto Reservation alla lista
+
                     reservationLists.add(reservationList);
 
                     reservationAdapter.notifyDataSetChanged();

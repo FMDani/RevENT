@@ -199,7 +199,7 @@ public class HomeFragment extends Fragment {
                         }
 
                         // Aggiungi i dati all'oggetto MyEvent
-                        MyEvent event = new MyEvent(eventId, title, place, descr, dtStart, dtEnd, dur, userCreatorId, userSubscribeId);
+                        MyEvent event = new MyEvent(eventId, title, place, descr, dtStart, dtEnd, dur, userCreatorId,"","", userSubscribeId);
 
                         // Aggiungi l'evento alla lista
                         eventList.add(event);

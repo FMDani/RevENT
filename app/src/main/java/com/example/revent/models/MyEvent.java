@@ -18,6 +18,30 @@ public class MyEvent {
     private String dtStart;
     private String dtEnd;
     private String dur;
+
+    private String userCreatorId;
+
+    private String confirmedReservationId;
+    private String  confirmedClientId;
+
+    private ArrayList<String> userSubscribeId;
+
+    public MyEvent() {}
+
+    public MyEvent(String eventId, String title, String place, String descr, String dtStart, String dtEnd, String dur, String userCreatorId,String confirmedReservationId,String confirmedClientId, ArrayList<String> userSubscribeId) {
+        this.eventId = eventId;
+        this.title = title;
+        this.place = place;
+        this.descr = descr;
+        this.dtStart = dtStart;
+        this.dtEnd = dtEnd;
+        this.dur = dur;
+        this.userCreatorId = userCreatorId;
+        this.confirmedReservationId = confirmedReservationId;
+        this.confirmedClientId = confirmedClientId;
+        this.userSubscribeId = userSubscribeId;
+    }
+
     public String getPlace() {
         return place;
     }
@@ -42,6 +66,22 @@ public class MyEvent {
         return userCreatorId;
     }
 
+    public String getConfirmedReservationId() {
+        return confirmedReservationId;
+    }
+
+    public void setConfirmedReservationId(String confirmedReservationId) {
+        this.confirmedReservationId = confirmedReservationId;
+    }
+
+    public String getConfirmedClientId() {
+        return confirmedClientId;
+    }
+
+    public void setConfirmedClientId(String confirmedClientId) {
+        this.confirmedClientId = confirmedClientId;
+    }
+
     public void setUserCreatorId(String userCreatorId) {
         this.userCreatorId = userCreatorId;
     }
@@ -64,23 +104,6 @@ public class MyEvent {
 
 
 
-    private String userCreatorId;
-
-    private ArrayList<String> userSubscribeId;
-
-    public MyEvent() {}
-
-    public MyEvent(String eventId, String title, String place, String descr, String dtStart, String dtEnd, String dur, String userCreatorId, ArrayList<String> userSubscribeId) {
-        this.eventId = eventId;
-        this.title = title;
-        this.place = place;
-        this.descr = descr;
-        this.dtStart = dtStart;
-        this.dtEnd = dtEnd;
-        this.dur = dur;
-        this.userCreatorId = userCreatorId;
-        this.userSubscribeId = userSubscribeId;
-    }
 
     public String getEventId() {
         return eventId;

@@ -87,7 +87,7 @@ public class AddEvent extends AppCompatActivity {
                 String dtEnd = editTextEndDate.getText().toString();
                 String dur = editTextDuration.getText().toString();
                 String key = rootRef.push().getKey();
-                MyEvent event = new MyEvent(key, title, place, descr, dtStart, dtEnd, dur, uid, new ArrayList<>());
+                MyEvent event = new MyEvent(key, title, place, descr, dtStart, dtEnd, dur, uid,"","", new ArrayList<>());
 
 
                 DatabaseReference ref_events = rootRef.child(key);

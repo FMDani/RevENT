@@ -75,13 +75,31 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:text="change status"/>
-
-                <Button
-                    android:id="@+id/btn_confirmstatus"
+                <RelativeLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:text="confirm booking"/>
+                    android:layout_height="match_parent">
+                    <Button
+                        android:id="@+id/btn_confirmstatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:text="confirm booking"/>
+
+                    <TextView
+                        android:id="@+id/confirmedText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="1dp"
+                        android:text="confirmed"
+                        android:textColor="@color/deepBlue"
+                        android:textStyle="bold"
+                        android:textSize="20dp"/>
+                </RelativeLayout>
+
+
             </LinearLayout>
 
 
