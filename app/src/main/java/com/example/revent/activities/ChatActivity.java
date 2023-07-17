@@ -134,16 +134,7 @@ public class ChatActivity extends AppCompatActivity {
                 unseenMessages = 0;
                 lastMessage ="";
                 chatKey="";
-                LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
 
-                View view = inflater.inflate(R.layout.messages_adapter_layout, null);
-
-                /*
-
-                CircleImageView circleImageView_user = view.findViewById(R.id.profilePic);
-
-
-                */
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     final String user_id = dataSnapshot.getKey();
 
@@ -154,35 +145,11 @@ public class ChatActivity extends AppCompatActivity {
                         final String getName = String.valueOf(dataSnapshot.child("name").getValue());
                         final String getSurname = String.valueOf(dataSnapshot.child("surname").getValue());
 
-                        // recupero immagine profile dell'user_id che ha dataSnapshot
-                        /*
-
-
-                        final long ONE_MEGABYTE = 1024 * 1024 * 3;
-                        storageRef.child("images_profile/"+user_id).child("image_profile.jpg").getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-                            @Override
-                            public void onSuccess(byte[] bytes) {
-                                // Data for "images/island.jpg" is returns, use this as needed
-                                Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                                circleImageView_user.setImageBitmap(bmp);
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception exception) {
-                                // Handle any errors
-                            }
-                        });
-
-                        */
-
                         DatabaseReference databaseReference_chat = FirebaseDatabase.getInstance("https://revent-93be7-default-rtdb.europe-west1.firebasedatabase.app/").getReference("chat");
 
                         databaseReference_chat.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-
-
 
                                 int getChatCounts = (int)snapshot.getChildrenCount();
 

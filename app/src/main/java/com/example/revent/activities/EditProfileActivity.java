@@ -20,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.example.revent.R;
+import com.example.revent.fragments.MyProfileFragment;
 import com.example.revent.models.FireBaseWrapper;
 import com.example.revent.models.FireBaseWrapper.Auth;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -50,6 +51,7 @@ public class EditProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_profile);
 
         Button ChoosePhoto = (Button) this.findViewById(R.id.choosephoto_fromgallery);
+        ImageView backBtn = findViewById(R.id.backBtn_event);
 
 
 
@@ -134,6 +136,17 @@ public class EditProfileActivity extends AppCompatActivity {
                 }
             });
                     */
+        });
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(EditProfileActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+
+
+            }
         });
     }
 

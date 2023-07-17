@@ -162,18 +162,6 @@ public class HomeFragment extends Fragment {
 
     private void setupData()
     {
-        /*
-        //juan
-        MyEvent event1 = new MyEvent("1", "matrimonio", "Principe", "Lo smuzzo di sposa", "01/01/2023", "02/01/2023", "10h", "msiqXE1mdOXZmrwUtc1VBD01WKJ3", new ArrayList<String>(Arrays.asList("XdmnkjUQc2OAUOQ60HVLmuZMnUR2", "HvuSpTrIRlbBScWBAlITw9yFoco1")));
-        eventList.add(event1);
-        //daniel
-        MyEvent event2 = new MyEvent("2", "laurea", "albaro", "daniel si laurea", "01/02/2023", "02/02/2023", "5h", "XdmnkjUQc2OAUOQ60HVLmuZMnUR2", new ArrayList<String>(Arrays.asList( "HvuSpTrIRlbBScWBAlITw9yFoco1")));
-        eventList.add(event2);
-        //pippo
-        MyEvent event3 = new MyEvent("3", "partita", "marassi", "genoa in serie A", "01/03/2023", "02/03/2023", "3h", "HvuSpTrIRlbBScWBAlITw9yFoco1", new ArrayList<String>(Arrays.asList("msiqXE1mdOXZmrwUtc1VBD01WKJ3", "XdmnkjUQc2OAUOQ60HVLmuZMnUR2")));
-        eventList.add(event3);
-
-         */
         DatabaseReference eventsRef = FirebaseDatabase.getInstance("https://revent-93be7-default-rtdb.europe-west1.firebasedatabase.app/").getReference("events");
 
         eventsRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
@@ -191,18 +179,22 @@ public class HomeFragment extends Fragment {
                         String dtEnd = eventSnapshot.child("dtEnd").getValue(String.class);
                         String dur = eventSnapshot.child("dur").getValue(String.class);
                         String userCreatorId = eventSnapshot.child("userCreatorId").getValue(String.class);
+                        String confirmedClientId = eventSnapshot.child("confirmedClientId").getValue(String.class);
+                        String confirmedReservationId = eventSnapshot.child("confirmedReservationId").getValue(String.class);
                         ArrayList<String> userSubscribeId = new ArrayList<>();
 
                         for (DataSnapshot userSnapshot : eventSnapshot.child("userSubscribeId").getChildren()) {
                             String userId = userSnapshot.getValue(String.class);
                             userSubscribeId.add(userId);
                         }
+                        if(confirmedReservationId.equals("") && confirmedClientId.equals("")){
+                            // Aggiungi i dati all'oggetto MyEvent
+                            MyEvent event = new MyEvent(eventId, title, place, descr, dtStart, dtEnd, dur, userCreatorId,"","", userSubscribeId);
 
-                        // Aggiungi i dati all'oggetto MyEvent
-                        MyEvent event = new MyEvent(eventId, title, place, descr, dtStart, dtEnd, dur, userCreatorId,"","", userSubscribeId);
+                            // Aggiungi l'evento alla lista
+                            eventList.add(event);
+                        }
 
-                        // Aggiungi l'evento alla lista
-                        eventList.add(event);
                     }
 
                 } else {

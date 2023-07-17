@@ -150,7 +150,7 @@ public class SignUpFragment extends LogFragment {
                                                     ref_token.child(uid).setValue(token);
 
                                                     // toast
-                                                    Toast.makeText(getActivity(),"new FCM registration token " + token, Toast.LENGTH_SHORT)
+                                                    Toast.makeText(getActivity()," Successfully Sign-up ", Toast.LENGTH_SHORT)
                                                             .show();
                                                 }
                                             });

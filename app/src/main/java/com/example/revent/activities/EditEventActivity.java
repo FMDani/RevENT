@@ -21,7 +21,7 @@ public class EditEventActivity extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(EditEventActivity.this, ShowEventActivity.class);
+                Intent intent = new Intent(EditEventActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }

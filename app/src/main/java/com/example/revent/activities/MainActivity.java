@@ -2,20 +2,17 @@ package com.example.revent.activities;
 
 
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 
 import com.example.revent.R;
 import com.example.revent.fragments.HomeFragment;
 import com.example.revent.fragments.NotificationFragment;
-import com.example.revent.fragments.SettingsFragment;
-import com.google.android.material.badge.BadgeDrawable;
+import com.example.revent.fragments.MyProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -24,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
 
     HomeFragment homeFragment = new HomeFragment();
-    SettingsFragment settingsFragment = new SettingsFragment();
+    MyProfileFragment myProfileFragment = new MyProfileFragment();
     NotificationFragment notificationFragment = new NotificationFragment();
 
     @Override
@@ -57,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 } else if (itemId == R.id.settings) {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.container, settingsFragment).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container, myProfileFragment).commit();
                     return true;
                 }
 

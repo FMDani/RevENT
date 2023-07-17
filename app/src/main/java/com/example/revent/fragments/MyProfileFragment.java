@@ -5,7 +5,6 @@ import static java.nio.file.Paths.get;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,7 +15,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,12 +35,10 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import java.io.File;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
-public class SettingsFragment extends Fragment {
+public class MyProfileFragment extends Fragment {
     private FirebaseAuth auth;
 
     @Override
@@ -82,7 +78,7 @@ public class SettingsFragment extends Fragment {
             @Override
             public void onFailure(@NonNull Exception exception) {
                 // Handle any errors
-                Toast.makeText(getActivity(), "Failed to download",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "Failed to download",Toast.LENGTH_SHORT).show();
             }
         });
         ///////////////////////////////////

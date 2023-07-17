@@ -119,6 +119,7 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         String confirmedReservationId = dataSnapshot.child("confirmedReservationId").getValue(String.class);
                         String confirmedClientId = dataSnapshot.child("confirmedClientId").getValue(String.class);
+                        String titleEvent = dataSnapshot.child("title").getValue(String.class);
 
                         if (confirmedReservationId.equals("") && confirmedClientId.equals("")) {
                             databaseReference_events.child(list1.getIdEvent()).child("confirmedReservationId").setValue(list1.getReservationId());
@@ -134,8 +135,8 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
                                     FCMSend.pushNotification(
                                             context,
                                             clientToken,
-                                            "Hello",
-                                            "Hello World message"
+                                            "Ciao ",
+                                            "La sua prenotazione a "+titleEvent+" è stata confermata"
 
                                     );
                                 }

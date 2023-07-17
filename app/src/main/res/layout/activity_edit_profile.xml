@@ -6,62 +6,74 @@
     android:layout_height="match_parent"
     tools:context=".activities.EditProfileActivity">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center">
-
-
-        <TextView
-            android:id="@+id/editprofile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:text="Edit Profile"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:textColor="#B2B4B5"/>
-
+        android:layout_height="match_parent">
         <ImageView
-            android:id="@+id/imagefromgallery"
-            android:layout_width="208dp"
-            android:layout_height="175dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="16dp" />
-
-        <Button
-            android:id="@+id/choosephoto_fromgallery"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:text="Choose photo profile" />
-
-        <EditText
-            android:id="@+id/edit_name"
+            android:id="@+id/backBtn_event"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@drawable/round_back_light_10"
+            android:paddingStart="12sp"
+            android:paddingEnd="2dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/back_btn" />
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints="Insert name.."
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="Insert name.." />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Edit Profile"
+                android:textColor="@color/lightText"
+                android:textSize="30dp"
+                android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/edit_surname"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints="Insert surname.."
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="Insert surname.."
-             />
+            <ImageView
+                android:id="@+id/imagefromgallery"
+                android:layout_width="208dp"
+                android:layout_height="175dp"
+                android:layout_marginStart="17dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="16dp" />
 
-        <Button
-            android:id="@+id/modify_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Save modify" />
-    </LinearLayout>
+            <Button
+                android:id="@+id/choosephoto_fromgallery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="Choose photo profile" />
+
+            <EditText
+                android:id="@+id/edit_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="Insert name.."
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Insert name.." />
+
+            <EditText
+                android:id="@+id/edit_surname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="Insert surname.."
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Insert surname.."
+                />
+
+            <Button
+                android:id="@+id/modify_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Save modify" />
+        </LinearLayout>
+    </RelativeLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
