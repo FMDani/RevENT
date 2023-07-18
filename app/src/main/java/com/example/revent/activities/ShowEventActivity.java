@@ -146,6 +146,7 @@ public class ShowEventActivity extends AppCompatActivity {
                 public void onClick(View view) {
 
                     Intent intent = new Intent(ShowEventActivity.this, EditEventActivity.class);
+                    intent.putExtra("EventId",getEventId);
                     startActivity(intent);
                     finish();
                 }
@@ -222,34 +223,6 @@ public class ShowEventActivity extends AppCompatActivity {
                                     createNewReservation(uid, getCreatorId, getEventId, reservationDate, confirm);
                                     Toast.makeText(ShowEventActivity.this, "Successfully booked", Toast.LENGTH_SHORT).show();
                                 }
-
-
-                                /*
-                                for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
-
-
-                                    if(dataSnapshot.child("idClient").getValue(String.class).equals(uid)){
-
-                                        if(!dataSnapshot.child("idEvent").getValue(String.class).equals(getEventId)){
-
-                                            continue;
-                                        }
-                                        Toast.makeText(ShowEventActivity.this , "you have already booked",Toast.LENGTH_SHORT).show();
-                                        break;
-                                    } else {
-
-                                        boolean confirm = false;
-                                        createNewReservation(uid, getCreatorId, getEventId, reservationDate, confirm);
-                                        Intent intent = new Intent(ShowEventActivity.this, MainActivity.class);
-                                        startActivity(intent);
-                                        finish();
-
-                                    }
-
-
-                                }
-
-                                */
 
                             } else {
                                 // Il nodo non ha figli

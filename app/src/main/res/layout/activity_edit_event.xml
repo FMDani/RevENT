@@ -58,7 +58,7 @@
                 tools:layout_editor_absoluteY="170dp" />
         </RelativeLayout>
         <EditText
-            android:id="@+id/editTextText"
+            android:id="@+id/nameEvent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -70,7 +70,7 @@
             android:autofillHints="Insert NameEvent.."/>
 
         <EditText
-            android:id="@+id/editTextText2"
+            android:id="@+id/namePlace"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/round_back_white_10"
@@ -82,7 +82,7 @@
             android:autofillHints="Insert NamePlace.." />
 
         <EditText
-            android:id="@+id/editTextText6"
+            android:id="@+id/nameDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/round_back_white_10"
@@ -94,7 +94,7 @@
             android:autofillHints="Insert Description.." />
 
         <EditText
-            android:id="@+id/editTextText3"
+            android:id="@+id/startDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/round_back_white_10"
@@ -106,7 +106,7 @@
             android:autofillHints="Insert Start Date.." />
 
         <EditText
-            android:id="@+id/editTextText4"
+            android:id="@+id/endDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/round_back_white_10"
@@ -118,7 +118,7 @@
             android:autofillHints="Insert End Date.." />
 
         <EditText
-            android:id="@+id/editTextText5"
+            android:id="@+id/duration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/round_back_white_10"

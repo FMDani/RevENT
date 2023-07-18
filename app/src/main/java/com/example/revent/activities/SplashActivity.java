@@ -41,13 +41,6 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-
-        //TODO : check user
-        // if  not --> log
-
-
-        //createNotificationChannel();
-
         // check  Calendar permissions
 
         PermissionManager pm = new PermissionManager(this);
@@ -80,46 +73,8 @@ public class SplashActivity extends AppCompatActivity {
             }
         });
 
-
-
-        /*
-        FireBaseWrapper.Auth auth = new FireBaseWrapper.Auth();
-        boolean test = auth.isAuthenticated();
-        if(!auth.isAuthenticated()) {
-            // go to Activity for login or signup
-            Toast.makeText(SplashActivity.this, "Vado all'enter",Toast.LENGTH_SHORT).show();
-            this.goToActivity(EnterActivity.class);
-
-        }else{
-            Toast.makeText(SplashActivity.this, "Vado al main",Toast.LENGTH_SHORT).show();
-            this.goToActivity(MainActivity.class);
-        }
-
-        */
     }
 
-    /*
-    // creazione di un canale di notifica
-
-    public String CHANNEL_ID = "Messages";
-
-    private void createNotificationChannel() {
-        // Create the NotificationChannel, but only on API 26+ because
-        // the NotificationChannel class is not in the Support Library.
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = getString(R.string.channel_name);
-            String description = getString(R.string.channel_description);
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
-            channel.setDescription(description);
-            // Register the channel with the system. You can't change the importance
-            // or other notification behaviors after this.
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
-
-        }
-    }
-    */
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

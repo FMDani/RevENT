@@ -72,7 +72,7 @@ public class SignUpFragment extends LogFragment {
                 if (email.getText().toString().isEmpty() ||
                         password.getText().toString().isEmpty() ||
                         password2.getText().toString().isEmpty()) {
-                    // TODO: Better error handling + remove this hardcoded strings
+
                     email.setError("Email is required");
                     password.setError("Password is required");
                     password2.setError("Password is required");
@@ -80,29 +80,13 @@ public class SignUpFragment extends LogFragment {
                 }
 
                 if (!password.getText().toString().equals(password2.getText().toString())) {
-                    // TODO: Better error handling + remove this hardcoded strings
+
                     Toast
                             .makeText(SignUpFragment.this.requireActivity(), "Passwords are different", Toast.LENGTH_LONG)
                             .show();
                     return;
                 }
 
-                //TODO check on name and surname
-
-
-                // Perform SignIn
-                /*
-                FireBaseWrapper.Auth auth = new FireBaseWrapper.Auth();
-                auth.signUp(
-                        email.getText().toString(),
-                        password.getText().toString(),
-                        FireBaseWrapper.Callback
-                                .newInstance(SignUpFragment.this.requireActivity(),
-                                        SignUpFragment.this.callbackName,
-                                        SignUpFragment.this.callbackPrms)
-                );
-
-                 */
                 auth = FirebaseAuth.getInstance();
                 
                 auth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString())
@@ -111,7 +95,7 @@ public class SignUpFragment extends LogFragment {
                             public void onComplete(@NonNull Task<AuthResult> task) {
 
                                 if(!task.isSuccessful()) {
-                                    // TODO: Better handling of the error message --> Put in a textview of the activity
+
                                     Toast
                                             .makeText(getActivity(), "Username or password are not valid", Toast.LENGTH_SHORT)
                                             .show();
@@ -165,20 +149,6 @@ public class SignUpFragment extends LogFragment {
                                     getActivity().finish();
                                 }
 
-                                //callback.invoke(task.isSuccessful());
-                            /*
-                            if (task.isSuccessful()) {
-                                // Sign in success, update UI with the signed-in user's information
-                                Log.d(TAG, "createUserWithEmail:success");
-                                FirebaseUser user = auth.getCurrentUser();
-
-                            } else {
-                                // If sign in fails, display a message to the user.
-                                Log.w(TAG, "createUserWithEmail:failure", task.getException());
-
-
-                            }
-                            */
 
                             }
                         });

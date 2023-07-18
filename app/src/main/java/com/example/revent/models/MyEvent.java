@@ -8,8 +8,6 @@ import java.util.ArrayList;
 
 public class MyEvent {
 
-    // TODO: Levare - è simile a quella del prof ma io non uso il contentprovider infatti levo calenid e isallday(attributi)
-
     private String eventId;
     private String title;
 

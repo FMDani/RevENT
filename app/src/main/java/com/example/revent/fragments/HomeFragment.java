@@ -52,7 +52,6 @@ public class HomeFragment extends Fragment {
         if (eventList.isEmpty()) setupData();
 
         setUpList(externalView);
-        setUpOnclickListener();
         return externalView;
     }
 
@@ -212,22 +211,5 @@ public class HomeFragment extends Fragment {
 
         MyEventAdapter adapter = new MyEventAdapter(getActivity(), 0, eventList);
         listView.setAdapter(adapter);
-    }
-
-    private void setUpOnclickListener()
-    {
-        /*
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l)
-            {
-                Shape selectShape = (Shape) (listView.getItemAtPosition(position));
-                Intent showDetail = new Intent(getApplicationContext(), DetailActivity.class);
-                showDetail.putExtra("id",selectShape.getId());
-                startActivity(showDetail);
-            }
-        });
-         */
-
     }
 }

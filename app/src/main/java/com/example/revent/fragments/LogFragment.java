@@ -30,7 +30,7 @@ public abstract class LogFragment extends Fragment {
         } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException |
                  java.lang.InstantiationException e) {
 
-            // TODO: Handle exception
+
             throw new RuntimeException(e);
         }
         Bundle args = new Bundle();

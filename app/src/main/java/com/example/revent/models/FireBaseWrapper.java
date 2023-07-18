@@ -38,12 +38,12 @@ public class FireBaseWrapper {
                 Log.w(TAG, "Cannot find  method " + name + " in class " + clazz.getCanonicalName());
 
 
-                //TODO: Better handling of the error
                 throw new RuntimeException(e);
             }
         }
         /// Object con tre punti indica che questa metodo può prendere input da zero parametri a cento
         ///Lista di oggetti ma noi non sappiamo che oggetti siano
+
         public void invoke(Object... objs) {
             try {
                 this.method.invoke(thiz, objs);
@@ -93,19 +93,6 @@ public class FireBaseWrapper {
                         public void onComplete(@NonNull Task<AuthResult> task) {
 
                             callback.invoke(task.isSuccessful());
-                            /*
-                            if (task.isSuccessful()) {
-                                // Sign in success, update UI with the signed-in user's information
-                                Log.d(TAG, "createUserWithEmail:success");
-                                FirebaseUser user = auth.getCurrentUser();
-
-                            } else {
-                                // If sign in fails, display a message to the user.
-                                Log.w(TAG, "createUserWithEmail:failure", task.getException());
-
-
-                            }
-                            */
 
                         }
                     });
@@ -118,8 +105,6 @@ public class FireBaseWrapper {
         }
 
        public String getUid() {
-           // TODO: remove this assert and better handling of non logged-in users
-           //assert this.isAuthenticated();
            return this.getUser().getUid();
        }
 

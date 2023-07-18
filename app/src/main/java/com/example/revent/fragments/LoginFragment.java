@@ -15,48 +15,11 @@ import com.example.revent.activities.EnterActivity;
 import com.example.revent.models.FireBaseWrapper;
 
 public class LoginFragment extends LogFragment {
-    /*
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "method_name";
-    private static final String ARG_PARAM2 = "method_prms";
-
-    // TODO: Rename and change types of parameters
-    /*
-    private String mParam1;
-    private String mParam2;
-    */
-
-    /*
-    public LoginFragment() {
-        // Required empty public constructor
-    }
-
-
-    private String callbackName;
-    private Class[] callbackPrms;
-    public static LoginFragment newInstance(String param1, Class<?>... prms) {
-        LoginFragment fragment = new LoginFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putSerializable(ARG_PARAM2, prms);
-        fragment.setArguments(args);
-        return fragment;
-    }
-    */
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /*
-        if (getArguments() != null) {
-            this.callbackName = getArguments().getString(ARG_PARAM1);
-            this.callbackPrms = (Class[]) getArguments().getSerializable(ARG_PARAM2);
-        }
-
-        */
         this.initArguments();
     }
 
@@ -87,7 +50,7 @@ public class LoginFragment extends LogFragment {
                 EditText password = externalView.findViewById(R.id.userPassword);
 
                 if(email.getText().toString().isEmpty() || password.getText().toString().isEmpty()) {
-                    // TODO: Remove this hardcoded strings
+
                     email.setError("Email is required");
                     password.setError("Password is required");
                     return;

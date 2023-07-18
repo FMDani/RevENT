@@ -81,11 +81,6 @@ public class ConversationActivity extends AppCompatActivity {
         final String user_id = getIntent().getStringExtra("user_id");
         chatKey = getIntent().getStringExtra("chat_key");
 
-        // get user id from memory
-        /*
-        getUserid = MemoryData.getData(ConversationActivity.this);
-
-         */
 
         String uid = new FireBaseWrapper.Auth().getUid();
 
@@ -191,18 +186,6 @@ public class ConversationActivity extends AppCompatActivity {
 
                 // get current timestamps
                 final String currentTimestamp = String.valueOf(System.currentTimeMillis()).substring(0,10);
-
-                /*
-                //TODO:send Notification (fatto quando volevo usare realtime databse come server)
-
-                Notification.Builder notification = new Notification.Builder(this, splashActivity.CHANNEL_ID)
-                        .setContentTitle(getUserid)
-                        .setContentText(getTxtMessage)
-                        .setSmallIcon(R.drawable.ic_launcher)
-                        .setAutoCancel(true);
-                */
-
-                //MemoryData.saveLastMsgTS(currentTimestamp, chatKey, ConversationActivity.this);
 
                 databaseReference.child("chat").child(chatKey).child("user_1").setValue(getUserid);
                 databaseReference.child("chat").child(chatKey).child("user_2").setValue(user_id);

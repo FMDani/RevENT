@@ -121,35 +121,6 @@ public class MyProfileFragment extends Fragment {
                         .show();
             }
         } );
-        /*------------------------
-
-        ref.child(uid).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Log.e("firebase", "Error getting data", task.getException());
-                }
-                else {
-                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
-
-                    Map<Long, User> dbUsers = new HashMap<>();
-
-                    // Iterate over the db objects
-
-                    for(DataSnapshot child : task.getResult().getChildren()) {
-                        User user = child.getValue(User.class);
-                        dbUsers.put(ref.get(uid), user);
-                    }
-                }
-            }
-        });
-
-        */
-        /////////////////////////////////////
-
-
-        // Set the text for the TextView
-       // name_textView.setText("Settings Fragment");
 
 
         Button sgnbutton = externalView.findViewById(R.id.sgnoutbut);
@@ -158,17 +129,6 @@ public class MyProfileFragment extends Fragment {
         sgnbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //TODO refactor as a callback
-               /*
-                FireBaseWrapper.Auth auth = new FireBaseWrapper.Auth();
-                auth.signOut(
-                        FireBaseWrapper.Callback
-                                .newInstance(MainActivity.class,
-                                        "signinCallback",
-                                        boolean.class)
-                );
-                */
 
 
                 FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -184,18 +144,6 @@ public class MyProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                //TODO refactor as a callback
-               /*
-                FireBaseWrapper.Auth auth = new FireBaseWrapper.Auth();
-                auth.signOut(
-                        FireBaseWrapper.Callback
-                                .newInstance(MainActivity.class,
-                                        "signinCallback",
-                                        boolean.class)
-                );
-                */
-
-
                 Intent intent = new Intent(getActivity(), EditProfileActivity.class);
                 startActivity(intent);
                 getActivity().finish();
@@ -209,18 +157,6 @@ public class MyProfileFragment extends Fragment {
         message_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //TODO refactor as a callback
-               /*
-                FireBaseWrapper.Auth auth = new FireBaseWrapper.Auth();
-                auth.signOut(
-                        FireBaseWrapper.Callback
-                                .newInstance(MainActivity.class,
-                                        "signinCallback",
-                                        boolean.class)
-                );
-                */
-
 
                 Intent intent = new Intent(getActivity(), ChatActivity.class);
                 startActivity(intent);
@@ -238,7 +174,7 @@ public class MyProfileFragment extends Fragment {
 
     public void signinCallback(boolean result) {
         if(!result) {
-            // TODO: Better handling of the error message --> Put in a textview of the activity
+
             Toast
                     .makeText(getActivity(), "unable to signOut", Toast.LENGTH_SHORT)
                     .show();

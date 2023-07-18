@@ -86,16 +86,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 EditText name_edited = findViewById(R.id.edit_name);
                 EditText surname_edited = findViewById(R.id.edit_surname);
 
-                /*
-                if (name_edited.getText().toString().isEmpty() ||
-                        surname_edited.getText().toString().isEmpty()) {
-                    // TODO: Better error handling + remove this hardcoded strings
-                    name_edited.setError("Name is required");
-                    surname_edited.setError("Surname is required");
-                    return;
-                }
 
-                 */
                 DatabaseReference rootRef = FirebaseDatabase.getInstance("https://revent-93be7-default-rtdb.europe-west1.firebasedatabase.app/").getReference();
 
                 if (!name_edited.getText().toString().isEmpty()){
@@ -118,24 +109,6 @@ public class EditProfileActivity extends AppCompatActivity {
                 finish();
             }
 
-
-            /*
-            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                    .setDisplayName("Jane Q. User")
-                    .setDisplayS()
-                    .build();
-
-                    user.updateProfile(profileUpdates)
-                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if (task.isSuccessful()) {
-
-                        Toast.makeText(EditProfileActivity.this, "User profile updated",Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-                    */
         });
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override

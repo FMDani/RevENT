@@ -103,7 +103,6 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
         });
         holder.reservation_date.setText(list1.getReservationDate());
 
-        // TODO: implement the change status button
 
         holder.btn_confirmstatus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,7 +125,6 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
                             databaseReference_events.child(list1.getIdEvent()).child("confirmedClientId").setValue(list1.getIdClient());
                             databaseReference_res.child(list1.getReservationId()).child("confirmed").setValue(true);
 
-                            // TODO: invia una notifica all'utente di avvenuta conferma
 
                             databaseReference_tokens.addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
